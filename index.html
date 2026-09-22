@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d6efd">
+  <title>Scanner Apel Guru - SMKN 4 Buton Tengah</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">E-APEL GURU</div>
+      <h1>SMKN 4 BUTON TENGAH</h1>
+    </div>
+    <span id="connectionBadge" class="badge">MENGHUBUNGKAN...</span>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <div>
+        <div id="clock" class="clock">--:--:--</div>
+        <div id="dateText" class="date">Memuat tanggal...</div>
+      </div>
+      <div id="statusApel" class="status waiting">MEMERIKSA STATUS...</div>
+    </section>
+
+    <section class="stats grid-4">
+      <div class="stat card"><span>Total Guru</span><strong id="totalGuru">0</strong></div>
+      <div class="stat card"><span>Hadir</span><strong id="hadir">0</strong></div>
+      <div class="stat card"><span>Alpa</span><strong id="alpa">0</strong></div>
+      <div class="stat card"><span>Belum</span><strong id="belum">0</strong></div>
+    </section>
+
+    <section class="card scanner-card">
+      <div class="section-title">
+        <h2>📷 Scan QR Guru</h2>
+        <span>06:00–07:15 WITA</span>
+      </div>
+      <div id="reader"></div>
+      <div class="actions">
+        <button id="startBtn" class="btn primary">▶ BUKA KAMERA</button>
+        <button id="stopBtn" class="btn danger" disabled>■ HENTIKAN</button>
+      </div>
+      <div id="scanResult" class="result hidden"></div>
+    </section>
+
+    <section class="card">
+      <h2>⌨️ Absensi Manual</h2>
+      <p class="muted">Gunakan ID Guru atau NIP jika scanner bermasalah.</p>
+      <div class="manual-row">
+        <input id="manualId" type="text" placeholder="Masukkan ID Guru / NIP" autocomplete="off">
+        <button id="manualBtn" class="btn primary">✓ ABSEN</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>📷 Foto Apel</h2>
+        <span>Timestamp otomatis</span>
+      </div>
+      <input id="photoInput" type="file" accept="image/*" capture="environment" hidden>
+      <button id="photoBtn" class="btn secondary">📸 AMBIL FOTO APEL</button>
+      <canvas id="photoCanvas" hidden></canvas>
+      <div id="photoPreview"></div>
+      <button id="uploadPhotoBtn" class="btn success hidden">☁ SIMPAN FOTO APEL</button>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>📊 Laporan</h2>
+      </div>
+      <div class="report-grid">
+        <button class="btn outline" data-report="harian">Harian</button>
+        <button class="btn outline" data-report="mingguan">Mingguan</button>
+        <button class="btn outline" data-report="bulanan">Bulanan</button>
+        <button class="btn outline" data-report="semester">Semester</button>
+        <button class="btn outline" data-report="tahunan">Tahunan</button>
+      </div>
+      <div id="reportArea"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
